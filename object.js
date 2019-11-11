@@ -29,11 +29,15 @@ alert( item1);
 item2 = 'ITEM 2 old data'; 
 alert( item2);
 
-var item1String = 'ITEM 1 new data';
-var item2String = 'ITEM 2 new data';
+var newFirstN = 'Dina';
+document.getElementById('firstN').innerHTML = newFirstN;
 
-item1.innerHTML = item1String;
-alert(item1);
+document.write('Your new name is ' + document.getElementById('firstN').innerHTML + document.getElementById('MiddleN').innerHTML +
+document.getElementById('LastN').innerHTML);
 
-item2.innerHTML = item2String;
-alert(item2);
+//creating new element nickname
+var nickname = document.createElement('li') ;
+var NickN = document.createTextNode('Raghood');
+nickname.appendChild(NickN);
+var position = document.getElementsByTagName('ul')[0];
+position.appendChild(nickname);
