@@ -1,43 +1,43 @@
 'use strict';
-// ///This is the literal notation that is used to create a function.
-// var hotel = {
 
-//   ///Properties
-//   name : 'Myhotel',
-//   location : 'Amman',
-//   rooms : 40,
-//   booked: 20,
-//   gym: false,
+///CREATING CONSTRUCTOR CALLED HOTEL
+function Hotel (name, location, rooms, booked){
 
-//   //Method
-//   checkAvailability: function () {
-//     return (this.rooms - this.booked);
-//   },
-// };
-// // The object created above is hotel.
+  this.hname = name;
+  this.locate = location;
+  this.room = rooms;
+  this.booked = booked;
+  //creating a function for printing the hotel on screen.
+  this.print = function (){
+    document.write('<br> <br> <br> Welcome to our database, your hotel is called  ' + this.hname + ' and is located in ' + this.locate + '.  '
+  + this.booked + ' out of ' + this.room + ' are booked.' );
+  };
+  //Function to check availability
+  this.checkAvailability = function (){
+    return (this.room - this.booked);
+  };
+}
 
-// var hotelname = hotel.name;
-// var available = hotel.checkAvailability();
+///TO CREATE OBJECT OF CLASS HOTEL
 
-// alert('The hotel name is ' + hotelname + '  and there are ' + available + ' rooms available!');
+var newHotel = new Hotel('Ibis', 'Amman', '500', '150' , true);
 
-var item1;
-var item2;
-item1 = 'ITEM 1 old data';
-alert( item1);
+document.write('The new hotel is ' + newHotel.hname + ' and is located in ' + newHotel.locate + '.  '
++ newHotel.booked + ' out of ' + newHotel.room + ' are booked.' );
 
-item2 = 'ITEM 2 old data'; 
-alert( item2);
+////ASKING USER TO INPUT THEIR HOTEL'S INFO
+var hotelName, hotelLocation , hotelRoom , roomsBooked ;
+function hotelInput(){
 
-var newFirstN = 'Dina';
-document.getElementById('firstN').innerHTML = newFirstN;
+  hotelName = prompt('Enter the name of your hotel :');
+  hotelLocation = prompt ('Where is your hotel located ?');
+  hotelRoom = prompt ('How many rooms are available in your hotel ?');
+  roomsBooked = prompt ('Out of the ' + hotelRoom + ', how many are booked?');
 
-document.write('Your new name is ' + document.getElementById('firstN').innerHTML + document.getElementById('MiddleN').innerHTML +
-document.getElementById('LastN').innerHTML);
+  var nwHotel =  new Hotel(hotelName , hotelLocation, hotelRoom, roomsBooked);
+  nwHotel.print();
+  alert('You have ' + nwHotel.checkAvailability() + ' rooms available!');
+}
+////END OF USER INPUT
 
-//creating new element nickname
-var nickname = document.createElement('li') ;
-var NickN = document.createTextNode('Raghood');
-nickname.appendChild(NickN);
-var position = document.getElementsByTagName('ul')[0];
-position.appendChild(nickname);
+hotelInput();
